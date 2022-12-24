@@ -1,4 +1,4 @@
-(function (s, x, k) { //Made by Dalrae, edit by FreeThrill
+(function (s, x, k) { //Made by Dalrae
     function ChromeOrSafari() {
         var isChrome = -1 < navigator.userAgent.indexOf("Chrome"),
             isSafari = -1 < navigator.userAgent.indexOf("Safari");
@@ -790,11 +790,11 @@
                           (f = snake.y),
                           (g = db),
                           38 == d.keyCode || 87 == d.keyCode
-                              ? 0 != a.direction && ((a.direction = 1), a.turn(a.direction, e, f, g, 0))
+                              ? 1 != a.direction && 3 != a.direction && 0 != a.direction && ((a.direction = 1), a.turn(a.direction, e, f, g, 0))
                               : 37 == d.keyCode || 65 == d.keyCode
-                              ? 0 != a.direction && ((a.direction = 2), a.turn(a.direction, e, f, g, 0))
+                              ? 2 != a.direction && 4 != a.direction && 0 != a.direction && ((a.direction = 2), a.turn(a.direction, e, f, g, 0))
                               : 40 == d.keyCode || 83 == d.keyCode
-                              ? 0 != a.direction && ((a.direction = 3), a.turn(a.direction, e, f, g, 0))
+                              ? 3 != a.direction && 1 != a.direction && 0 != a.direction && ((a.direction = 3), a.turn(a.direction, e, f, g, 0))
                               : (39 != d.keyCode && 68 != d.keyCode) || 4 == a.direction || 2 == a.direction || 0 == a.direction || ((a.direction = 4), a.turn(a.direction, e, f, g, 0)))
                         : Ga && ((e = 0.01), d.shiftKey && (e = 0.1), 38 == d.keyCode ? (z.zoom += e) : 40 == d.keyCode && (z.zoom -= e), console.log(z.zoom), console.log(da / 10));
                     70 == d.keyCode
