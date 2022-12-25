@@ -789,7 +789,7 @@
                         ? ((e = snake.x),
                           (f = snake.y),
                           (g = db),
-                          (var last_dir = a.direction),
+                          (last_dir = a.direction),
                           38 == d.keyCode || 87 == d.keyCode
                               ? 0 != a.direction && ((a.direction = 1), a.turn(a.direction, e, f, g, 0, last_dir))
                               : 37 == d.keyCode || 65 == d.keyCode
