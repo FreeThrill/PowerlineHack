@@ -796,7 +796,7 @@
                               ? 0 != a.direction && ((a.direction = 2), a.turn(a.direction, e, f, g, 0, last_dir))
                               : 40 == d.keyCode || 83 == d.keyCode
                               ? 0 != a.direction && ((a.direction = 3), a.turn(a.direction, e, f, g, 0, last_dir))
-                              : (39 != d.keyCode && 68 != d.keyCode) ((a.direction = 4), a.turn(a.direction, e, f, g, 0, last_dir)))
+                              : (39 != d.keyCode && 68 != d.keyCode) || ((a.direction = 4), a.turn(a.direction, e, f, g, 0, last_dir)))
                         : Ga && ((e = 0.01), d.shiftKey && (e = 0.1), 38 == d.keyCode ? (z.zoom += e) : 40 == d.keyCode && (z.zoom -= e), console.log(z.zoom), console.log(da / 10));
                     70 == d.keyCode
                         ? (x.fullscreenElement || x.mozFullScreenElement || x.webkitFullscreenElement || x.msFullscreenElement
