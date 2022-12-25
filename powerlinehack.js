@@ -826,6 +826,7 @@
             this.turn = function (a, f, g, e, b, last_dir) {
                 console.log(a, f, g, e, b, "1");
                 c++;
+                console.log(Ab);
                 Ab ? ((f = +new Date()), (g = f - Yb), (Yb = f), 30 > g && (e += 30), (e = snake.addTurnPoint(a, e)), (f = 10 * e.x), (g = 10 * e.y), (console.log(a, f, g, e, b, "2")), n.sendTurnPoint(a, 4 == last_dir || 2 == last_dir ? f / 10 : -g / 10)) : n.sendDirection(a);
             };
             this.addListeners = function () {
