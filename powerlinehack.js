@@ -789,13 +789,14 @@
                         ? ((e = snake.x),
                           (f = snake.y),
                           (g = db),
+                          (var last_dir = a.direction),
                           38 == d.keyCode || 87 == d.keyCode
-                              ? 0 != a.direction && ((a.direction = 1), a.turn(a.direction, e, f, g, 0))
+                              ? 0 != a.direction && ((a.direction = 1), a.turn(a.direction, e, f, g, 0, last_dir))
                               : 37 == d.keyCode || 65 == d.keyCode
-                              ? 0 != a.direction && ((a.direction = 2), a.turn(a.direction, e, f, g, 0))
+                              ? 0 != a.direction && ((a.direction = 2), a.turn(a.direction, e, f, g, 0, last_dir))
                               : 40 == d.keyCode || 83 == d.keyCode
-                              ? 0 != a.direction && ((a.direction = 3), a.turn(a.direction, e, f, g, 0))
-                              : (39 != d.keyCode && 68 != d.keyCode) ((a.direction = 4), a.turn(a.direction, e, f, g, 0)))
+                              ? 0 != a.direction && ((a.direction = 3), a.turn(a.direction, e, f, g, 0, last_dir))
+                              : (39 != d.keyCode && 68 != d.keyCode) ((a.direction = 4), a.turn(a.direction, e, f, g, 0, last_dir)))
                         : Ga && ((e = 0.01), d.shiftKey && (e = 0.1), 38 == d.keyCode ? (z.zoom += e) : 40 == d.keyCode && (z.zoom -= e), console.log(z.zoom), console.log(da / 10));
                     70 == d.keyCode
                         ? (x.fullscreenElement || x.mozFullScreenElement || x.webkitFullscreenElement || x.msFullscreenElement
@@ -821,10 +822,10 @@
                 }
             };
             a.keyup = function (a) {};
-            this.turn = function (a, f, g, e, b) {
+            this.turn = function (a, f, g, e, b, last_dir) {
                 console.log(a, f, g, e, b, "1");
                 c++;
-                Ab ? ((f = +new Date()), (g = f - Yb), (Yb = f), 30 > g && (e += 30), (e = snake.addTurnPoint(a, e)), (f = 10 * e.x), (g = 10 * e.y), (console.log(a, f, g, e, b, "2")), n.sendTurnPoint(a, 1 == a || 3 == a ? f / 10 : -g / 10)) : n.sendDirection(a);
+                Ab ? ((f = +new Date()), (g = f - Yb), (Yb = f), 30 > g && (e += 30), (e = snake.addTurnPoint(a, e)), (f = 10 * e.x), (g = 10 * e.y), (console.log(a, f, g, e, b, "2")), n.sendTurnPoint(a, 4 == last_dir || 2 == last_dir ? f / 10 : -g / 10)) : n.sendDirection(a);
             };
             this.addListeners = function () {
                 x.addEventListener("mousedown", a.mousedown, false);
