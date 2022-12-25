@@ -822,9 +822,9 @@
             };
             a.keyup = function (a) {};
             this.turn = function (a, f, g, e, b) {
-                console.log(a, f, g, e, b);
+                console.log(a, f, g, e, b, "1");
                 c++;
-                Ab ? ((f = +new Date()), (g = f - Yb), (Yb = f), 30 > g && (e += 30), (e = snake.addTurnPoint(a, e)), (f = 10 * e.x), (g = 10 * e.y), n.sendTurnPoint(a, 1 == a || 3 == a ? f / 10 : -g / 10)) : n.sendDirection(a);
+                Ab ? ((f = +new Date()), (g = f - Yb), (Yb = f), 30 > g && (e += 30), (e = snake.addTurnPoint(a, e)), (f = 10 * e.x), (g = 10 * e.y), (console.log(a, f, g, e, b, "2")), n.sendTurnPoint(a, 1 == a || 3 == a ? f / 10 : -g / 10)) : n.sendDirection(a);
             };
             this.addListeners = function () {
                 x.addEventListener("mousedown", a.mousedown, false);
