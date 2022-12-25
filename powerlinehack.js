@@ -789,7 +789,6 @@
                         ? ((e = snake.x),
                           (f = snake.y),
                           (g = db),
-                          console.log(g);
                           38 == d.keyCode || 87 == d.keyCode
                               ? 0 != a.direction && ((a.direction = 1), a.turn(a.direction, e, f, g, 0))
                               : 37 == d.keyCode || 65 == d.keyCode
@@ -823,6 +822,7 @@
             };
             a.keyup = function (a) {};
             this.turn = function (a, f, g, e, b) {
+                console.log(a, f, g, e, b);
                 c++;
                 Ab ? ((f = +new Date()), (g = f - Yb), (Yb = f), 30 > g && (e += 30), (e = snake.addTurnPoint(a, e)), (f = 10 * e.x), (g = 10 * e.y), n.sendTurnPoint(a, 1 == a || 3 == a ? f / 10 : -g / 10)) : n.sendDirection(a);
             };
