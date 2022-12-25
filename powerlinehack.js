@@ -2311,6 +2311,7 @@
                 pb = 10 * a.getFloat32(c, true);
                 c = c + 4 + 4;
                 db = a.getFloat32(c, true);
+                console.log(db);
                 c += 4;
                 a.getFloat32(c, true);
                 c += 4;
