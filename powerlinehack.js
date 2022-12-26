@@ -1780,7 +1780,7 @@
                 return { x: a, y: e, dist: d, direction: b };
             };
             this.addTurnPoint = function (b, a) {
-                console.log(a, Wa, "what is this"?);
+                console.log(a, Wa, "what is this?");
                 300 < Wa && (a += Wa - 300);
                 //7.5 is the "normal" speed
                 var e = (a*7.5/** this.lastSpeed*/) / OneHundred,
