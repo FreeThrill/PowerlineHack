@@ -334,7 +334,7 @@
         D,
         R = 1,
         last_dir,
-        s.localStorage.muteVol;
+        S = s.localStorage.muteVol;
     if (void 0 == S || "undefined" == S) S = 1;
     var Ca = 0,
         ia = s.localStorage.arrows,
