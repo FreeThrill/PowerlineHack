@@ -334,7 +334,7 @@
         D,
         R = 1,
         last_dir,
-        S = s.localStorage.muteVol;
+        s.localStorage.muteVol;
     if (void 0 == S || "undefined" == S) S = 1;
     var Ca = 0,
         ia = s.localStorage.arrows,
@@ -1776,6 +1776,7 @@
                 this.playSounds && D.playSound(gc, hc * na * R, 1, sa, null);
             };
             this.findLastWaitingPoint = function (b) {
+                console.log(S, "The misterious counting thingy");
                 for (var a = this.x, e = this.y, d = 0, c = 0; c < S; c++) (b = this.waitingPoints[c]), (d += ua(a, e, b.x, b.y)), (a = b.x), (e = b.y), (b = b.d);
                 return { x: a, y: e, dist: d, direction: b };
             };
