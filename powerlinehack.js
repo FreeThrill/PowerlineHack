@@ -824,7 +824,7 @@
             };
             a.keyup = function (a) {};
             this.fake_turn = function(a, f, g, e, b, last_dir) {
-                if ((last_dir + a) % 2 != 0) {
+                if (((last_dir + a) % 2 != 0) || (last_dir == 0 || a == 0)) {
                     this.turn(a, f, g, e, b, false, true);
                 } else if (last_dir != a) {
                     this.turn((last_dir % 4) + 1, f, g, e, b, true, true);
