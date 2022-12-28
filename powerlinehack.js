@@ -825,17 +825,17 @@
             a.keyup = function (a) {};
             this.fake_turn = function(a, f, g, e, b, last_dir) {
                 if ((last_dir + a) % 2 != 0) {
-                    this.turn(a, f, g, e, b);
+                    this.turn(a, f, g, e, b, false);
                 } else if (last_dir != a) {
-                    this.turn((last_dir % 4) + 1, f, g, e, b);
-                    this.turn(a, f, g, e, b);
+                    this.turn((last_dir % 4) + 1, f, g, e, b, true);
+                    this.turn(a, f, g, e, b, false);
                 }
             }
-            this.turn = function (a, f, g, e, b) {
+            this.turn = function (a, f, g, e, b, is_zero) {
                 console.log(a, f, g, e, b, "1");
                 c++;
                 console.log(Ab);
-                Ab ? ((f = +new Date()), (g = f - Yb), (Yb = f), 30 > g && (e += 30), (e = snake.addTurnPoint(a, e)), (f = 10 * e.x), (g = 10 * e.y), (console.log(a, f, g, e, b, "2")), n.sendTurnPoint(a, 3 == a || 1 == a ? f / 10 : -g / 10)) : n.sendDirection(a);
+                Ab ? ((f = +new Date()), (g = f - Yb), (Yb = f), 30 > g && (e += 30), (e = snake.addTurnPoint(a, e, is_zero)), (f = 10 * e.x), (g = 10 * e.y), (console.log(a, f, g, e, b, "2")), n.sendTurnPoint(a, 3 == a || 1 == a ? f / 10 : -g / 10)) : n.sendDirection(a);
             };
             this.addListeners = function () {
                 x.addEventListener("mousedown", a.mousedown, false);
@@ -1788,13 +1788,16 @@
                 for (var a = this.x, e = this.y, d = 0, c = 0; c < S; c++) (b = this.waitingPoints[c]), (d += ua(a, e, b.x, b.y)), (a = b.x), (e = b.y), (b = b.d);
                 return { x: a, y: e, dist: d, direction: b };
             };
-            this.addTurnPoint = function (b, a) {
+            this.addTurnPoint = function (b, a, is_zero) {
                 console.log(a, Wa, "what is this?");
                 300 < Wa && (a += Wa - 300);
                 //7.5 is the "normal" speed
                 var e = (a*7.5/** this.lastSpeed*/) / OneHundred,
                     d = this.findLastWaitingPoint(this.direction),
                     c = e - d.dist,
+                    if (is_zero) {
+                        c = 0
+                    }
                     l = getDirectionVector(d.direction),
                     e = d.x + l.x * c,
                     d = d.y + l.y * c;
