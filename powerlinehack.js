@@ -827,7 +827,7 @@
                 if ((last_dir + a) % 2 != 0) {
                     this.turn(a, f, g, e, b, false, true);
                 } else if (last_dir != a) {
-                    this.turn((last_dir % 4) + 1, f, g, e, b, true, true);
+                    this.turn((last_dir % 4) + 1, f, g, e, b, true, false);
                     this.turn(a, f, g, e, b, true, true);
                 }
             }
@@ -835,7 +835,7 @@
                 console.log(a, f, g, e, b, "1");
                 c++;
                 console.log(Ab);
-                Ab ? ((f = +new Date()), (g = f - Yb), (Yb = f), 30 > g && (e += 30), (e = snake.addTurnPoint(a, e, is_zero)), (f = 10 * e.x), (g = 10 * e.y), (console.log(a, f, g, e, b, "2")), ((send_turn) || (n.sendTurnPoint(a, 3 == a || 1 == a ? f / 10 : -g / 10)))) : n.sendDirection(a);
+                Ab ? ((f = +new Date()), (g = f - Yb), (Yb = f), 30 > g && (e += 30), (e = snake.addTurnPoint(a, e, is_zero)), (f = 10 * e.x), (g = 10 * e.y), (console.log(a, f, g, e, b, "2")), ((send_turn) && (n.sendTurnPoint(a, 3 == a || 1 == a ? f / 10 : -g / 10)))) : n.sendDirection(a);
             };
             this.addListeners = function () {
                 x.addEventListener("mousedown", a.mousedown, false);
