@@ -3455,7 +3455,7 @@
                       (d.isFull = true),
                       (d.points = []),
                       d.points.push({ x: h, y: g }),
-                      (h += 30),
+                      (h += 1000),
                       d.points.push({ x: h, y: g }),
                       (d.x = h),
                       (d.y = g),
