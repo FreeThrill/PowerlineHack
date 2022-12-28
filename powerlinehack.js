@@ -1794,10 +1794,7 @@
                 //7.5 is the "normal" speed
                 var e = (a*7.5/** this.lastSpeed*/) / OneHundred,
                     d = this.findLastWaitingPoint(this.direction),
-                    c = e - d.dist,
-                    if (is_zero) {
-                        c = 0
-                    }
+                    c = is_zero ? 0 : e - d.dist,
                     l = getDirectionVector(d.direction),
                     e = d.x + l.x * c,
                     d = d.y + l.y * c;
