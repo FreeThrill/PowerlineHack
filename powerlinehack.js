@@ -333,7 +333,7 @@
         Ja = false,
         D,
         R = 1,
-        last_dir,
+        last_dir = 0,
         S = s.localStorage.muteVol;
     if (void 0 == S || "undefined" == S) S = 1;
     var Ca = 0,
@@ -792,12 +792,12 @@
                           (g = db),
                           (last_dir = a.direction),
                           38 == d.keyCode || 87 == d.keyCode
-                              ? 0 != a.direction && ((a.direction = 1), a.turn(a.direction, e, f, g, 0, last_dir))
+                              ? 0 != a.direction && ((a.direction = 1), a.fake_turn(a.direction, e, f, g, 0, last_dir))
                               : 37 == d.keyCode || 65 == d.keyCode
-                              ? 0 != a.direction && ((a.direction = 2), a.turn(a.direction, e, f, g, 0, last_dir))
+                              ? 0 != a.direction && ((a.direction = 2), a.fake_turn(a.direction, e, f, g, 0, last_dir))
                               : 40 == d.keyCode || 83 == d.keyCode
-                              ? 0 != a.direction && ((a.direction = 3), a.turn(a.direction, e, f, g, 0, last_dir))
-                              : (39 != d.keyCode && 68 != d.keyCode) || ((a.direction = 4), a.turn(a.direction, e, f, g, 0, last_dir)))
+                              ? 0 != a.direction && ((a.direction = 3), a.fake_turn(a.direction, e, f, g, 0, last_dir))
+                              : (39 != d.keyCode && 68 != d.keyCode) || ((a.direction = 4), a.fake_turn(a.direction, e, f, g, 0, last_dir)))
                         : Ga && ((e = 0.01), d.shiftKey && (e = 0.1), 38 == d.keyCode ? (z.zoom += e) : 40 == d.keyCode && (z.zoom -= e), console.log(z.zoom), console.log(da / 10));
                     70 == d.keyCode
                         ? (x.fullscreenElement || x.mozFullScreenElement || x.webkitFullscreenElement || x.msFullscreenElement
@@ -823,7 +823,15 @@
                 }
             };
             a.keyup = function (a) {};
-            this.turn = function (a, f, g, e, b, last_dir) {
+            this.fake_turn = function(a, f, g, e, b, last_dir) {
+                if (last_dir + a) % 2 != 0 {
+                    this.turn(a, f, g, e, b);
+                } else if last_dir != a {
+                    this.turn((last_dir % 4) + 1, f, g, e, b);
+                    this.turn(a, f, g, e, b);
+                }
+            }
+            this.turn = function (a, f, g, e, b) {
                 console.log(a, f, g, e, b, "1");
                 c++;
                 console.log(Ab);
