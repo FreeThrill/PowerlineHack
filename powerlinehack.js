@@ -828,7 +828,7 @@
                     this.turn(a, f, g, e, b, false);
                 } else if (last_dir != a) {
                     this.turn((last_dir % 4) + 1, f, g, e, b, true);
-                    this.turn(a, f, g, e, b, false);
+                    this.turn(a, f, g, e, b, true);
                 }
             }
             this.turn = function (a, f, g, e, b, is_zero) {
