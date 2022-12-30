@@ -825,21 +825,28 @@
             a.keyup = function (a) {};
             this.fake_turn = function(a, f, g, e, b, last_dir) {
                 if (((last_dir + a) % 2 != 0) || (last_dir == 0 || a == 0)) {
-                    this.turn(a, f, g, e, b, false, true);
+                    this.turn(a, f, g, e, b, false, true, false);
                 } else if (last_dir != a) {
                     if ((last_dir - 1) < 1) {
-                        this.turn(last_dir + 3, f, g, e, b, true, true);
+                        this.turn(last_dir + 3, f, g, e, b, true, true, false);
                     } else {
-                        this.turn(last_dir - 1, f, g, e, b, true, true);
+                        this.turn(last_dir - 1, f, g, e, b, true, true, false);
                     }
-                    this.turn(a, f, g, e, b, true, true);
+                    this.turn(a, f, g, e, b, true, true, false);
+                } else {
+                    if ((last_dir - 1) < 1) {
+                        this.turn(last_dir + 3, f, g, e, b, true, true, false);
+                    } else {
+                        this.turn(last_dir - 1, f, g, e, b, true, true, false);
+                    }
+                    this.turn(a, f, g, e, b, true, true, true);
                 }
             }
-            this.turn = function (a, f, g, e, b, is_zero, send_turn) {
+            this.turn = function (a, f, g, e, b, is_zero, send_turn, is_jump) {
                 console.log(a, f, g, e, b, "1");
                 c++;
                 console.log(Ab);
-                Ab ? ((f = +new Date()), (g = f - Yb), (Yb = f), 30 > g && (e += 30), (e = snake.addTurnPoint(a, e, is_zero)), (f = 10 * e.x), (g = 10 * e.y), (console.log(a, f, g, e, b, "2")), ((send_turn) && (n.sendTurnPoint(a, 3 == a || 1 == a ? f / 10 : -g / 10)))) : n.sendDirection(a);
+                Ab ? ((f = +new Date()), (g = f - Yb), (Yb = f), 30 > g && (e += 30), (e = snake.addTurnPoint(a, e, is_zero, is_jump)), (f = 10 * e.x), (g = 10 * e.y), (console.log(a, f, g, e, b, "2")), ((send_turn) && (n.sendTurnPoint(a, 3 == a || 1 == a ? f / 10 : -g / 10)))) : n.sendDirection(a);
             };
             this.addListeners = function () {
                 x.addEventListener("mousedown", a.mousedown, false);
@@ -1792,14 +1799,14 @@
                 for (var a = this.x, e = this.y, d = 0, c = 0; c < S; c++) (b = this.waitingPoints[c]), (d += ua(a, e, b.x, b.y)), (a = b.x), (e = b.y), (b = b.d);
                 return { x: a, y: e, dist: d, direction: b };
             };
-            this.addTurnPoint = function (b, a, is_zero) {
+            this.addTurnPoint = function (b, a, is_zero, is_jump) {
                 console.log(a, Wa, "what is this?");
                 console.log(this.points);
                 300 < Wa && (a += Wa - 300);
                 //7.5 is the "normal" speed
                 var e = (a*7.5/** this.lastSpeed*/) / OneHundred,
                     d = this.findLastWaitingPoint(this.direction),
-                    c = is_zero ? 0 : e - d.dist,
+                    c = is_zero ? 0 : (is_jump? 30: e - d.dist),
                     l = getDirectionVector(d.direction),
                     e = d.x + l.x * c,
                     d = d.y + l.y * c;
