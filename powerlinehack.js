@@ -827,7 +827,7 @@
                 if (((last_dir + a) % 2 != 0) || (last_dir == 0 || a == 0)) {
                     this.turn(a, f, g, e, b, false, true);
                 } else if (last_dir != a) {
-                    this.turn((last_dir - 2) % 4 + 1, f, g, e, b, true, true);
+                    this.turn(((last_dir - 2) % 4 + 1) % 4, f, g, e, b, true, true);
                     this.turn(a, f, g, e, b, true, true);
                 }
             }
