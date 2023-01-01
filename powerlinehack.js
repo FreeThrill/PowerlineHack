@@ -834,8 +834,10 @@
                     }
                     this.turn(a, f, g, e, b, true, true, false);
                 } else {
+                    var turn_count = 0;
                     var spinny_direction = last_dir;
-                    while (true) {
+                    while (turn_count < 100) {
+                        turn_count += 1;
                         spinny_direction = spinny_direction % 4;
                         spinny_direction += 1;
                         this.turn(spinny_direction, f, g, e, b, true, true, false);
