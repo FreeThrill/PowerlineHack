@@ -834,7 +834,7 @@
                     }
                     this.turn(a, f, g, e, b, true, true, false);
                 } else {
-                    let var spinny_direction = last_dir;
+                    var spinny_direction = last_dir;
                     while (true) {
                         spinny_direction = spinny_direction % 4;
                         spinny_direction += 1;
